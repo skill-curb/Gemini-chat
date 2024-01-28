@@ -1,4 +1,4 @@
 langchain
-streamlit
+streamlit==1.12.2
 langchain_google_genai
 pypdf
