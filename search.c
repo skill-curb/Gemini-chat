@@ -1,4 +1,5 @@
 #include <stdio.h> 
+#include "search.h"
   
 // Utility function to swap two elements
 void swap(int *xp, int *yp) {
@@ -7,21 +8,7 @@ void swap(int *xp, int *yp) {
     *yp = temp;
 }
 
-int search(int arr[], int N, int x) 
-{ 
-    int left = 0;
-    int right = N - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] == x)
-            return mid;
-        if (arr[mid] < x)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
-    return -1; 
-} 
+
   
 // Driver code 
 int main(void) 
