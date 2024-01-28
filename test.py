@@ -59,38 +59,7 @@ def get_model_response(file, query):
 def main():
     st.title("Chat with CSV using Gemini Pro")
 
-    # File uploader
-    uploaded_file = st.sidebar.file_uploader("Choose a CSV file", type="csv")
-    if uploaded_file:
-        temp_dir = tempfile.mkdtemp()
-        path = os.path.join(temp_dir, uploaded_file.name)
-        with open(path, "wb") as f:
-            f.write(uploaded_file.getvalue())
-    if uploaded_file is not None:
-        # use tempfile because CSVLoader only accepts a file_path
-        with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-            tmp_file.write(uploaded_file.getvalue())
-            tmp_file_path = tmp_file.name
-
-        csv_loader = CSVLoader(file_path=tmp_file_path, encoding="utf-8", csv_args={
-            'delimiter': ','})
-        # Initialize chat history
-        chat_history = ""
-        user_input = st.text_input("Your Message:")
-        print(user_input)
-        #    try:
-        data = csv_loader.load()
-        if user_input:
-            response = get_model_response(data, user_input)
-            st.write(response)
-            # Update chat history
-            chat_history += f"User: {user_input}\nBot: {response}\n"
-    #        print(data)
-    # Chat interface
-
-    #    except Exception as e:
-    #      print(f"Error processing CSV file: {e}")
-
+   
 
 if __name__ == "__main__":
     main()
