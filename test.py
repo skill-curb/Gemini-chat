@@ -58,6 +58,13 @@ def get_model_response(file, query):
 # Main app
 def main():
     st.title("Chat with CSV using Gemini Pro")
+    st.image('path/to/image', use_column_width=True)
+    uploaded_file = st.file_uploader("Upload your file", type=['pdf'], accept_multiple_files=False)
+    user_question = st.text_input("Your question:")
+    if st.button("Get Response") and uploaded_file is not None and user_question:
+        with st.spinner('Getting response...'):
+            response = get_model_response(uploaded_file, user_question)
+        st.write(response)
 
    
 
